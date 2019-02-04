@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<script>
+function calculate()
+{
+  var input1 = parseFloat(document.getElementById("input1").value);
+  var input2 = parseFloat(document.getElementById("input2").value);
+  
+   if(input1<0 || input2<0){
+                 document.getElementById("warning").innerHTML = "Please enter a positive value.......";
+               }
+   if(input1>=0&& input2>=0){
+                   document.getElementById("warning").innerHTML = "";
+                   }
+
+
+for(var i=0;i<input1unit.options.length;i++)
+    {
+	  if(input1unit.options[i].selected) input1unitid = i;
+    }
+
+for(var i=0;i<input2unit.options.length;i++)
+    {
+	  if(input2unit.options[i].selected) input2unitid = i;
+    }
+
+	scale = [1,0.3048,0.01,0.001,0.0254];
+
+var midinput1 = input1*scale[input1unitid];
+var midinput2 = input2*scale[input2unitid];
+
+
+var midoutput1 = 3.14159*midinput1*midinput1;
+
+
+var b = (midinput1*midinput1)+(midinput2*midinput2);
+var l = Math.sqrt(b);
+
+var midoutput2 = 3.14159*midinput1*l;
+
+var midoutput3 = midoutput1+midoutput2;
+
+
+for(var i=0;i<value1unit.options.length;i++)
+
+    {
+	  if(value1unit.options[i].selected) value1unitid = i;
+	  }
+for(var i=0;i<value2unit.options.length;i++)
+
+    {
+	  if(value2unit.options[i].selected) value2unitid = i;
+	  }
+for(var i=0;i<value3unit.options.length;i++)
+
+    {
+	  if(value3unit.options[i].selected) value3unitid = i;
+	  }
+
+	  scale1 = [1,0.09290304,1E-4,1E-6,6.4516E-4];
+
+var output1 = midoutput1/scale1[value1unitid];
+var output2 = midoutput2/scale1[value2unitid];
+var output3 = midoutput3/scale1[value3unitid];
+
+document.getElementById('value1').value = output1;
+document.getElementById('value2').value = output2;
+document.getElementById('value3').value = output3;
+
+}
+</script>
+<style>
+td,p
+{
+    font-size:20px;
+	
+}
+
+input
+{
+    font-size:14pt;
+    width:150px;
+}
+
+select,form,option{
+width:120px;
+height:30px;
+size:30px;
+font-size:14pt;
+}
+</style>
+<body>
+<p id="warning" align="center"></p>
+
+
+<table border="0" align="center" id="table">
+<tr>
+   <td align="right" class="principal" id="unitinputtable">
+    <td align="right">Cone Radius </td>
+    </td>
+	   
+	   <td><input id="input1" type="number" onchange="calculate()" ;autofocus /></td>
+
+	   <td><form>
+                  <select name="input1unit" id="input1unit" onchange="calculate()">
+				  
+				          <option value="1">meter</option>
+                          <option value="2">foot</option>
+        				  <option value="3">centimeter</option>
+                          <option value="4">millimeter</option>
+        				  <option value="5">inch</option>
+                          
+                  </select>
+  
+        </form>
+  </td>
+</tr>
+
+<tr>
+   <td align="right" class="principal" id="unitinputtable">
+    <td align="right">Cone Height </td>
+    </td>
+	   
+	   <td><input id="input2" type="number" onchange="calculate()" ;autofocus /></td>
+
+	   <td><form>
+                  <select name="input2unit" id="input2unit" onchange="calculate()">
+				  
+				          <option value="1">meter</option>
+                          <option value="2">foot</option>
+        				  <option value="3">centimeter</option>
+                          <option value="4">millimeter</option>
+        				  <option value="5">inch</option>
+                          
+                  </select>
+  
+        </form>
+  </td>
+</tr>
+
+
+<tr>
+<td align="right" class="output1" id="unitoutputable"></td>
+<td align="right">Base Area</td>
+<td><input id="value1" type="number" onchange="calculate()";/></td>
+<td><select name="heightunit" id="value1unit" onchange="calculate()">
+				  
+				          <option value="1">Square meter</option>
+                          <option value="2">Square foot</option>
+        				  <option value="3">Square centimeter</option>
+                          <option value="4">Square millimeter</option>
+        				  <option value="5">Square inch</option>
+                          
+    </select>
+</td>
+</tr>
+<tr>
+<td align="right" class="output1" id="unitoutputable"></td>
+<td align="right">Lateral Area</td>
+<td><input id="value2" type="number" onchange="calculate()";/></td>
+<td><select name="heightunit" id="value2unit" onchange="calculate()">
+				  
+				          <option value="1">Square meter</option>
+                          <option value="2">Square foot</option>
+        				  <option value="3">Square centimeter</option>
+                          <option value="4">Square millimeter</option>
+        				  <option value="5">Square inch</option>
+                          
+    </select>
+</td>
+</tr>
+
+<tr>
+<td align="right" class="output1" id="unitoutputable"></td>
+<td align="right">Total Surface Area</td>
+<td><input id="value3" type="number" onchange="calculate()";/></td>
+<td><select name="heightunit" id="value3unit" onchange="calculate()">
+				  
+				          <option value="1">Square meter</option>
+                          <option value="2">Square foot</option>
+        				  <option value="3">Square centimeter</option>
+                          <option value="4">Square millimeter</option>
+        				  <option value="5">Square inch</option>
+                          
+    </select>
+</td>
+</tr>
+
+</table>
+</body>
+</html>
