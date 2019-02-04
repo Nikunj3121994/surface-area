@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<script>
+function calculate1()
+{
+  var input1 = parseFloat(document.getElementById("input1").value);
+var input2 = parseFloat(document.getElementById("input2").value);
+var input3 = parseFloat(document.getElementById("input3").value);
+
+   if(input1<0||input2<0 || input3<0){
+                 document.getElementById("warning").innerHTML = "Please enter a positive value.......";
+               }
+   if(input1>=0 &&input2>=0&&input3>=0 ){
+                   document.getElementById("warning").innerHTML = "";
+                   }
+
+
+for(var i=0;i<input1unit.options.length;i++)
+    {
+	  if(input1unit.options[i].selected) input1unitid = i;
+    }
+
+for(var i=0;i<input2unit.options.length;i++)
+    {
+	  if(input2unit.options[i].selected) input2unitid = i;
+    }
+for(var i=0;i<input3unit.options.length;i++)
+    {
+	  if(input3unit.options[i].selected) input3unitid = i;
+    }
+
+	scale = [1,0.3048,0.01,0.001,0.0254];
+
+var midinput1 = input1*scale[input1unitid];
+var midinput2 = input2*scale[input2unitid];
+var midinput3 = input3*scale[input3unitid];
+
+
+var midoutput = 2*((midinput1*midinput2)+(midinput3*midinput2)+(midinput1*midinput3));
+for(var i=0;i<valueunit.options.length;i++)
+    {
+	  if(valueunit.options[i].selected) valueunitid = i;
+	  }
+scale1 = [1,0.09290304,1E-4,1E-6,6.4516E-4];
+
+var output = midoutput/scale1[valueunitid];
+
+document.getElementById('value').value = output;
+}
+</script>
+<style>
+td,p
+{
+    font-size:20px;
+	
+}
+
+input
+{
+    font-size:14pt;
+    width:150px;
+}
+
+select,form,option{
+width:120px;
+height:30px;
+size:30px;
+font-size:14pt;
+}
+</style>
+<body>
+<p id="warning" align="center"></p>
+
+
+<table border="0" align="center" id="table">
+<tr>
+   <td align="right" class="principal" id="unitinputtable">
+    <td align="right">Cube Length </td>
+    </td>
+	   
+	   <td><input id="input1" type="number" onchange="calculate1()" ;autofocus /></td>
+
+	   <td><form>
+                  <select name="input1unit" id="input1unit" onchange="calculate1()">
+				  
+				          <option value="1">meter</option>
+                          <option value="2">foot</option>
+        				  <option value="3">centimeter</option>
+                          <option value="4">millimeter</option>
+        				  <option value="5">inch</option>
+                          
+                  </select>
+  
+        </form>
+  </td>
+</tr>
+
+<tr>
+   <td align="right" class="principal" id="unitinputtable">
+    <td align="right">Cube Breadth </td>
+    </td>
+	   
+	   <td><input id="input2" type="number" onchange="calculate1()" ;autofocus /></td>
+
+	   <td><form>
+                  <select name="input1unit" id="input2unit" onchange="calculate1()">
+				  
+				          <option value="1">meter</option>
+                          <option value="2">foot</option>
+        				  <option value="3">centimeter</option>
+                          <option value="4">millimeter</option>
+        				  <option value="5">inch</option>
+                          
+                  </select>
+  
+        </form>
+  </td>
+</tr>
+<tr>
+   <td align="right" class="principal" id="unitinputtable">
+    <td align="right">Cube Length </td>
+    </td>
+	   
+	   <td><input id="input3" type="number" onchange="calculate1()" ;autofocus /></td>
+
+	   <td><form>
+                  <select name="input3unit" id="input3unit" onchange="calculate1()">
+				  
+				          <option value="1">meter</option>
+                          <option value="2">foot</option>
+        				  <option value="3">centimeter</option>
+                          <option value="4">millimeter</option>
+        				  <option value="5">inch</option>
+                          
+                  </select>
+  
+        </form>
+  </td>
+</tr>
+
+<tr>
+<td align="right" class="output1" id="unitoutputable"></td>
+<td align="right">Surface Area</td>
+<td><input id="value" type="number" onchange="calculate1()";/></td>
+<td><select name="heightunit" id="valueunit" onchange="calculate1()">
+				  
+				          <option value="1">Square meter</option>
+                          <option value="2">Square foot</option>
+        				  <option value="3">Square centimeter</option>
+                          <option value="4">Square millimeter</option>
+        				  <option value="5">Square inch</option>
+                          
+    </select>
+</td>
+</tr>
+</table>
+</body>
+</html>
+
+<p>
+    For more calculation about surface area follow link given below:
+</p>
+<h1>Surface Area</h1>
+<table>
+  <tr>
+    <th>
+
+
+<input type="button" value="Ball" onclick="window.location.href='http://www.calculation.net.in/surfacearea/ball/'" /></th><th>
+<input type="button" value="Cone" onclick="window.location.href='http://www.calculation.net.in/surfacearea/cone/'" /></th><th>
+<input type="button" value="Cube" onclick="window.location.href='http://www.calculation.net.in/surfacearea/cube/'" /></th></tr><tr><th>
+<input type="button" value="Cube 2" onclick="window.location.href='http://www.calculation.net.in/surfacearea/cubewith-different-dimension/'" /></th><th>
+<input type="button" value="Cylinder" onclick="window.location.href='http://www.calculation.net.in/surfacearea/cylinder/'" /></th></tr></table>
